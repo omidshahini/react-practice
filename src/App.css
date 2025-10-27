@@ -1,0 +1,19 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+}
+
+.steps > span {
+    background-color: rgb(180, 176, 176);
+    width: 30px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    text-align: center;
+}
