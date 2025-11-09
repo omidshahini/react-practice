@@ -1,18 +1,61 @@
 
+import { useState } from 'react';
 import './App.css'
 
-const messages = [
-  'work out',
-  'take a break',
-  'read a book'
-]
+const questions = [
+  {
+    id: 1,
+    question: "What language is React based on?",
+    answer: "JavaScript"
+  },
+  {
+    id: 2,
+    question: "What are the building blocks of React apps?",
+    answer: "Components"
+  },
+  {
+    id: 3,
+    question: "What's the name of the syntax we use to describe a UI in React?",
+    answer: "JSX"
+  },
+  {
+    id: 4,
+    question: "How to pass data from parent to child components?",
+    answer: "Props"
+  },
+  {
+    id: 5,
+    question: "How to give components memory?",
+    answer: "useState hook"
+  },
+  {
+    id: 6,
+    question:
+      "What do we call an input element that is completely synchronised with state?",
+    answer: "Controlled element"
+  }
+];
+
+
 const App = () => {
+
+  const [selectedQ, setSelectedQ] = useState(null)
+
+  function handleClick(id) {
+    setSelectedQ(id !== selectedQ ? id : null)
+  }
+
   return (
-    <div className='w-xl bg-amber-200 mt-4 mx-auto'>
-      <div className='flex flex-row justify-center items-center gap-50 steps'>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
+    <div className='App'>
+      <div className="flashcards">
+        {questions.map((question) => (
+          <p 
+          key={question.id} 
+          onClick={() => handleClick(question.id)} 
+          className={question.id === selectedQ ? 'selected' : ''}>
+            {question.id === selectedQ ? question.answer : question.question}
+          </p>
+        ))}
       </div>
     </div>
   )
