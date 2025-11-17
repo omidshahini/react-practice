@@ -1,64 +1,76 @@
 
-import { useState } from 'react';
-import './App.css'
-
-const questions = [
-  {
-    id: 1,
-    question: "What language is React based on?",
-    answer: "JavaScript"
+const items = [
+  { id : 0,
+    name : 'Americano',
+    ingredients : 'Espresso, Hot Water',
+    price : 10,
+    src : 'images/americano.jpg'
   },
-  {
-    id: 2,
-    question: "What are the building blocks of React apps?",
-    answer: "Components"
+
+  { id : 1,
+    name : 'Espresso',
+    ingredients : 'Pure Espresso',
+    price : 8,
+    src : 'images/espresso.jpeg'
   },
-  {
-    id: 3,
-    question: "What's the name of the syntax we use to describe a UI in React?",
-    answer: "JSX"
+
+  { id : 2,
+    name : 'Cappuccino',
+    ingredients : 'Espresso, Hot Water, Sugar, Milk',
+    price : 15,
+    src : 'images/cappuccino.jpeg'
   },
-  {
-    id: 4,
-    question: "How to pass data from parent to child components?",
-    answer: "Props"
+
+  { id : 3,
+    name : 'Latte',
+    ingredients : 'Espresso, Milk',
+    price : 12,
+    src : 'images/latte.jpeg'
   },
-  {
-    id: 5,
-    question: "How to give components memory?",
-    answer: "useState hook"
+
+  { id : 4,
+    name : 'Cortado',
+    ingredients : 'Espresso, Chocolatte',
+    price : 11,
+    src : 'images/cortado.jpeg'
   },
-  {
-    id: 6,
-    question:
-      "What do we call an input element that is completely synchronised with state?",
-    answer: "Controlled element"
-  }
-];
+
+  { id : 5,
+    name : 'Flat White',
+    ingredients : 'Espresso, Creme',
+    price : 10,
+    src : 'images/flat white.jpeg'
+  },
+
+  { id : 6,
+    name : 'Mocha',
+    ingredients : 'Green Tea, Hot Water',
+    price : 16,
+    src : 'images/mocha.jpeg'
+  },
+
+  { id : 7,
+    name : 'Cold Brew',
+    ingredients : 'Espresso, Ice, Water',
+    price : 9,
+    src : 'images/cold brew.jpeg'
+  },
+]
 
 
-const App = () => {
 
-  const [selectedQ, setSelectedQ] = useState(null)
-
-  function handleClick(id) {
-    setSelectedQ(id !== selectedQ ? id : null)
-  }
-
+const Menu = () => {
   return (
-    <div className='App'>
-      <div className="flashcards">
-        {questions.map((question) => (
-          <p 
-          key={question.id} 
-          onClick={() => handleClick(question.id)} 
-          className={question.id === selectedQ ? 'selected' : ''}>
-            {question.id === selectedQ ? question.answer : question.question}
-          </p>
-        ))}
+    <div>
+    {items.map((item, id) => (
+      <div key={id} className="flex flex-col">
+        <img src={item.src} alt={item.name} style={{ width: '25%' }}/>
+        <h2>{item.name}</h2>
+        <p>{item.ingredients}</p>
+        <p><strong>{item.price}$</strong></p>
       </div>
+    ))}
     </div>
   )
 }
-
-export default App
+export default Menu;
