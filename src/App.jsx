@@ -74,6 +74,14 @@ const DateCounter = () => {
       <button onClick={() => setCount((c) => c - step)}>-</button>
       <span>count is : {count}</span>
       <button onClick={() => setCount((c) => c + step)}>+</button>
+
+      <span>
+        {count === 0
+        ? 'Today is'
+        : count > 0
+        ? `${count} Days from Today is: `
+        : `${Math.abs(count)} Day from Todays was: `}
+      </span>
       <p>{date.toString()}</p>
     </div>
   )
